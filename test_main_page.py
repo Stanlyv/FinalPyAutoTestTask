@@ -16,10 +16,10 @@ def test_guest_should_see_login_link(browser):
     page.should_be_login_link()
 
 
-def test_guest_should_see_current_url(browser):
+def test_guest_should_see_login_page(browser):
     url = "http://selenium1py.pythonanywhere.com/"
     page = MainPage(browser, url)
     page.open()
     page.go_to_login_page()
-    page = LoginPage(browser, url)
+    page = LoginPage(browser, browser.current_url)
     page.should_be_login_page()
