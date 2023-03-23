@@ -1,6 +1,7 @@
 import time
 import pytest
 from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 
 
 @pytest.mark.parametrize("url", [
@@ -60,3 +61,31 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
     page.go_to_login_page()
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/uk/catalogue/the-shellcoders-handbook_209/?promo=newYear#"
+    page = ProductPage(browser, link)
+    page.open()
+    page.go_to_basket()
+    page = BasketPage(browser, link)
+    page.should_basket_is_empty()
+
+@pytest.mark.xfail
+def test_guest_can_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/uk/catalogue/the-shellcoders-handbook_209/?promo=newYear#"
+    page = ProductPage(browser, link)
+    page.open()
+    page.go_to_basket()
+    page = BasketPage(browser, link)
+    page.should_basket_not_empty()
+
+
+
+
+
+
+
+
+
+
+
