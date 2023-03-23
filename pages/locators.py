@@ -1,6 +1,10 @@
 from selenium.webdriver.common.by import By
 
 
+class BasePageLocators:
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+
+
 class MainPageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
@@ -16,3 +20,4 @@ class ProductPageLocators:
     PRODUCT_NANE = (By.XPATH, '//div[contains(@class, "product_main")]//h1')
     PRODUCT_PRICE = (By.XPATH, '//div[contains(@class, "product_main")]//p[@class="price_color"]')
     BASKET_TOTAL = (By.XPATH, '//div[contains(@class, "basket-mini")]')
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alert-success")
