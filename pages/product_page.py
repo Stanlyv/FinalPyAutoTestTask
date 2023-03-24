@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class ProductPage(BasePage):
-    def should_add_item_to_basket(self):
+    def add_item_to_basket(self):
         add_to_basket = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET)
         add_to_basket.click()
 
@@ -30,7 +30,7 @@ class ProductPage(BasePage):
             print("No second alert presented: TimeoutException")
 
     def should_be_correct_notification(self):
-        product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NANE).text
+        product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         notifications = self.browser.find_element(*ProductPageLocators.ADDED_ITEM_NOTIFICATION).text
         assert product_name in notifications, "Actual product name is not equal to notification's product name"
 
